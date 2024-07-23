@@ -36,38 +36,35 @@
 
 <script>
 //Your code goes here 
-	const slider = document.querySelectorAll('.items');
-	let isDown = false;
-	let startX;
-	let scrollLeft;
+	const slider = document.querySelector('.items');
+let isDown = false;
+let startX;
+let scrollLeft;
 
-	slider.addEventListner('mousedown',(e) => {
-		isDown = true;
-		slider.classList.add('active');
-		startX = e.pageX - slider.offsetLeft;
-		scrollLeft = slider.scrollLeft;
-	})
+slider.addEventListener('mousedown',(e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+})
 
-	slider.addEventListener('mouseleave', () =>{
-		isDown = false;
+slider.addEventListener('mouseleave', () =>{
+    isDown = false;
+    slider.classList.remove('active');
+});
 
-		slider.classList.remove('active');
-	});
+slider.addEventListener('mouseup',() => {
+    isDown = false;
+    slider.classList.remove('active');
+});
 
-	slider.addEventListner('mouseup',() => {
-		isDown = false;
-
-		slider.classList.remve('active');
-	});
-
-	slider.addEventListner('mousemove', (e) => {
-		if(! isDown) return;
-		e.preventDefault();
-		const x = e.pagex - slider.offsetleft;
-
-		const walk = (x - startx) * 3;
-		slider.scrollLeft = scrollLeft - walk;
-	})
+slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 3;
+    slider.scrollLeft = scrollLeft - walk;
+})
 </script>
 
   </body>
