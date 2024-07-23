@@ -65,12 +65,13 @@
     });
 
     slider.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 2; // Adjust scroll speed
-      slider.scrollLeft = scrollLeft - walk;
-    });
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 2; // Adjust scroll speed
+  console.log(`startX: ${startX}, e.pageX: ${e.pageX}, slider.offsetLeft: ${slider.offsetLeft}, walk: ${walk}`);
+  slider.scrollLeft = scrollLeft - walk;
+});
   </script>
 
 </body>
